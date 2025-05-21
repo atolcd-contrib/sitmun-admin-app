@@ -385,7 +385,10 @@
     "displayHomeButton": "Mostrar el botó del menú d’inici",
     "displayLogoutButton": "Mostrar el botó de desconnexió",
     "addLogoTitle": "Mostrar logotip",
-    "logoName": "Nom del logotip"
+    "logoName": "Nom del logotip",
+    "maintenanceInformation": "Missatge de manteniment",
+    "creatorId": "ID del creador de l'aplicació",
+    "isUnavailable": "Aplicació no accessible"
   },
   "territoryEntity": {
     "generalData": "Dades Generals",

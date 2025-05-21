@@ -93,7 +93,8 @@ export class Application extends Resource {
     'scales', 'srs', 'jspTemplate', 'treeAutoRefresh',
     'accessParentTerritory', 'accessChildrenTerritory',
     'situationMap', 'createdDate', 'parameters', 'availableRoles',
-    'trees', 'backgrounds', 'territories', 'headerParams'
+    'trees', 'backgrounds', 'territories', 'headerParams', 'maintenanceInformation',
+    'lastUpdate', 'creatorId', 'isUnavailable'
   ];
 
   public static externalApp: string [] = [
@@ -104,7 +105,9 @@ export class Application extends Resource {
     'createdDate', 'parameters', 'availableRoles',
     'trees', 'backgrounds', 'territories',
     // Specific application properties
-    'jspTemplate', 'headerParams'
+    'jspTemplate', 'headerParams',
+    'jspTemplate', 'maintenanceInformation',
+    'lastUpdate', 'creatorId', 'isUnavailable'
   ]
 
   public static internalApp: string [] = [
@@ -117,7 +120,8 @@ export class Application extends Resource {
     // Specific application properties
     'title', 'theme', 'scales', 'srs', 'treeAutoRefresh',
     'accessParentTerritory', 'accessChildrenTerritory',
-    'situationMap', 'headerParams'
+    'situationMap', 'headerParams', 'maintenanceInformation',
+    'lastUpdate', 'creatorId', 'isUnavailable'
   ]
 
   public static touristicApp: string [] = [
@@ -126,7 +130,8 @@ export class Application extends Resource {
     // Common application properties
     'id',  'name', 'description', 'logo', 'type',
     'createdDate', 'parameters', 'availableRoles',
-    'trees', 'backgrounds', 'territories', 'headerParams'
+    'trees', 'backgrounds', 'territories', 'headerParams', 'maintenanceInformation',
+    'lastUpdate', 'creatorId', 'isUnavailable'
   ]
 }
 
@@ -147,6 +152,10 @@ export class ApplicationProjection extends Resource {
   logo: string;
   description: string;
   headerParams: any;
+  maintenanceInformation : string;
+  lastUpdate : Date;
+  creatorId : string;
+  isUnavailable : boolean;
 
   /**
    * Creates a new ApplicationProjection instance copying only the properties declared in ApplicationProjection and Resource classes
@@ -161,7 +170,8 @@ export class ApplicationProjection extends Resource {
       // ApplicationProjection properties
       'id', 'name', 'type', 'title', 'theme', 'scales', 'srs', 'jspTemplate',
       'treeAutoRefresh', 'accessParentTerritory', 'accessChildrenTerritory',
-      'situationMapId', 'createdDate', 'logo', 'description'
+      'situationMapId', 'createdDate', 'logo', 'description', 'maintenanceInformation',
+      'lastUpdate', 'creatorId', 'isUnavailable'
     ];
     propertiesToCopy.forEach(prop => {
       if (source[prop] !== undefined) {

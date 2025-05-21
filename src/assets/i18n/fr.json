@@ -383,7 +383,10 @@
     "displayHomeButton": "Afficher le bouton du menu d’accueil",
     "displayLogoutButton": "Afficher le bouton de déconnexion",
     "addLogoTitle": "Afficher logo",
-    "logoName": "Nom du logo"
+    "logoName": "Nom du logo",
+    "maintenanceInformation": "Message de maintenance",
+    "creatorId": "ID du créateur de l'application",
+    "isUnavailable": "Application non acessible"
   },
   "territoryEntity": {
     "generalData": "Données générales",

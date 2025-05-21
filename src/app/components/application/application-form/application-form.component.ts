@@ -44,6 +44,7 @@ import {DataTableDefinition, TemplateDialog} from '@app/components/data-tables.u
 import {ErrorHandlerService} from "@app/services/error-handler.service";
 import {LoggerService} from "@app/services/logger.service";
 import { ApplicationHeaderParameter } from '@app/domain/application/models/application-header-parameter.model';
+import { AccountService } from '@app/core';
 
 
 /**
@@ -157,6 +158,7 @@ export class ApplicationFormComponent extends BaseFormComponent<ApplicationProje
   };
   headerBaseLeft : any;
   headerBaseRight : any;
+  userList: Array<any> = [];
 
   /**
    * Creates an instance of ApplicationFormComponent.
@@ -195,6 +197,7 @@ export class ApplicationFormComponent extends BaseFormComponent<ApplicationProje
     protected roleService: RoleService,
     protected treeService: TreeService,
     protected utils: UtilsService,
+    protected accountService: AccountService
   ) {
     super(dialog, translateService, translationService, codeListService, loggerService, errorHandler, activatedRoute, router);
     this.parametersTable = this.defineParametersTable();
@@ -202,6 +205,16 @@ export class ApplicationFormComponent extends BaseFormComponent<ApplicationProje
     this.rolesTable = this.defineRolesTable();
     this.applicationBackgroundsTable = this.defineApplicationBackgroundsTable();
     this.headerParamsTable = this.defineNewHeaderParamDialog();
+
+    let userListByDefault = {
+      id: -1,
+      username: '-------'
+    }
+    this.userList.push(userListByDefault);
+    this.accountService.getAll().subscribe(
+      resp => {
+        this.userList.push(...resp);
+      });
   }
 
   /**
@@ -298,6 +311,9 @@ export class ApplicationFormComponent extends BaseFormComponent<ApplicationProje
       profileButton: new UntypedFormControl(this.entityToEdit.headerParams.headerRightSection.profileButton.visible),
       switchLanguage: new UntypedFormControl(this.entityToEdit.headerParams.headerRightSection.switchLanguage.visible),
       logo: new UntypedFormControl(this.entityToEdit.logo, []),
+      maintenanceInformation: new UntypedFormControl(this.entityToEdit.maintenanceInformation,[]),
+      creatorId: new UntypedFormControl(this.entityToEdit.creatorId ? this.entityToEdit.creatorId : this.userList[0].id,[]),
+      isUnavailable: new UntypedFormControl(this.entityToEdit.isUnavailable ? this.entityToEdit.isUnavailable : false,[]),
     });
   }
 

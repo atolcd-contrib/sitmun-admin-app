@@ -385,7 +385,10 @@
     "displayHomeButton": "Mostrar el botón del menú de inicio",
     "displayLogoutButton": "Mostrar el botón de desconexión",
     "addLogoTitle": "Mostrar logotipo",
-    "logoName": "Nombre del logotipo"
+    "logoName": "Nombre del logotipo",
+    "maintenanceInformation": "Mensaje de mantenimiento",
+    "creatorId": "ID del creador de la aplicación",
+    "isUnavailable": "Aplicación no accesible"
   },
   "territoryEntity": {
     "generalData": "Datos Generales",

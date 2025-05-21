@@ -385,7 +385,10 @@
     "displayHomeButton": "Show home menu button",
     "displayLogoutButton": "Show logout button",
     "addLogoTitle": "Show logo",
-    "logoName": "Logo name"
+    "logoName": "Logo name",
+    "maintenanceInformation": "Maintenance message",
+    "creatorId": "Application creator ID",
+    "isUnavailable": "Application unavailable"
   },
   "territoryEntity": {
     "generalData": "General Data",
