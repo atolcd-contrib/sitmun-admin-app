@@ -93,7 +93,7 @@ export class Application extends Resource {
     'scales', 'srs', 'jspTemplate', 'treeAutoRefresh',
     'accessParentTerritory', 'accessChildrenTerritory',
     'situationMap', 'createdDate', 'parameters', 'availableRoles',
-    'trees', 'backgrounds', 'territories', 'headerParams', 'maintenanceInformation',
+    'trees', 'backgrounds', 'territories', 'headerParams',
     'lastUpdate', 'creatorId', 'isUnavailable'
   ];
 
@@ -105,8 +105,7 @@ export class Application extends Resource {
     'createdDate', 'parameters', 'availableRoles',
     'trees', 'backgrounds', 'territories',
     // Specific application properties
-    'jspTemplate', 'headerParams',
-    'jspTemplate', 'maintenanceInformation',
+    'jspTemplate', 'headerParams', 'maintenanceInformation',
     'lastUpdate', 'creatorId', 'isUnavailable'
   ]
 
