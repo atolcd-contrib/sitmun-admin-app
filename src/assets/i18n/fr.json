@@ -369,7 +369,21 @@
     "status": "Statut",
     "logo": "Logo",
     "accessParentTerritory": "Les rôles territoriaux s'appliquent aux territoires parents",
-    "accessChildrenTerritory": "Les rôles territoriaux s'appliquent aux territoires descendants"
+    "accessChildrenTerritory": "Les rôles territoriaux s'appliquent aux territoires descendants",
+    "visible": "Afficher",
+    "section": "Position",
+    "headerLeftSection": "Gauche",
+    "headerRightSection": "Droite",
+    "headerParamTitle": "Configuration de l'en-tête",
+    "navigationHeaderConfigurationTitle": "Configuration de l’en-tête de navigation",
+    "displaySitmunLogo": "Afficher le logo Sitmun",
+    "displaySwitchLanguageButton": "Afficher le bouton de changement de langue",
+    "displaySwitchApplicationButton": "Afficher le bouton de changement de territoire",
+    "displayProfileButton": "Afficher le bouton de profil",
+    "displayHomeButton": "Afficher le bouton du menu d’accueil",
+    "displayLogoutButton": "Afficher le bouton de déconnexion",
+    "addLogoTitle": "Afficher logo",
+    "logoName": "Nom du logo"
   },
   "territoryEntity": {
     "generalData": "Données générales",

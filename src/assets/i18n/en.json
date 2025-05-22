@@ -371,7 +371,21 @@
     "status": "Status",
     "logo": "Logo",
     "accessParentTerritory": "Territorial roles apply to parent territories",
-    "accessChildrenTerritory": "Territorial roles apply to child territories"
+    "accessChildrenTerritory": "Territorial roles apply to child territories",
+    "visible": "Show",
+    "section": "Position",
+    "headerLeftSection": "Left",
+    "headerRightSection": "Right",
+    "headerParamTitle": "Header Configuration",
+    "navigationHeaderConfigurationTitle": "Navigation Header Configuration",
+    "displaySitmunLogo": "Show Sitmun logo",
+    "displaySwitchLanguageButton": "Show language switch button",
+    "displaySwitchApplicationButton": "Show territory switch button",
+    "displayProfileButton": "Show profile button",
+    "displayHomeButton": "Show home menu button",
+    "displayLogoutButton": "Show logout button",
+    "addLogoTitle": "Show logo",
+    "logoName": "Logo name"
   },
   "territoryEntity": {
     "generalData": "General Data",

@@ -371,7 +371,21 @@
     "status": "Estat",
     "logo": "Logo",
     "accessParentTerritory": "Els rols territorials s'apliquen als territoris pares",
-    "accessChildrenTerritory": "Els rols territorials s'apliquen als territoris fills"
+    "accessChildrenTerritory": "Els rols territorials s'apliquen als territoris fills",
+    "visible": "Mostrar",
+    "section": "Posició",
+    "headerLeftSection": "Esquerra",
+    "headerRightSection": "Dreta",
+    "headerParamTitle": "Configuració de la capçalera",
+    "navigationHeaderConfigurationTitle": "Configuració de la capçalera de navegació",
+    "displaySitmunLogo": "Mostrar el logotip de Sitmun",
+    "displaySwitchLanguageButton": "Mostrar el botó de canvi d’idioma",
+    "displaySwitchApplicationButton": "Mostrar el botó de canvi de territori",
+    "displayProfileButton": "Mostrar el botó de perfil",
+    "displayHomeButton": "Mostrar el botó del menú d’inici",
+    "displayLogoutButton": "Mostrar el botó de desconnexió",
+    "addLogoTitle": "Mostrar logotip",
+    "logoName": "Nom del logotip"
   },
   "territoryEntity": {
     "generalData": "Dades Generals",

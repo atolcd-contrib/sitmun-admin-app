@@ -93,7 +93,7 @@ export class Application extends Resource {
     'scales', 'srs', 'jspTemplate', 'treeAutoRefresh',
     'accessParentTerritory', 'accessChildrenTerritory',
     'situationMap', 'createdDate', 'parameters', 'availableRoles',
-    'trees', 'backgrounds', 'territories'
+    'trees', 'backgrounds', 'territories', 'headerParams'
   ];
 
   public static externalApp: string [] = [
@@ -104,7 +104,7 @@ export class Application extends Resource {
     'createdDate', 'parameters', 'availableRoles',
     'trees', 'backgrounds', 'territories',
     // Specific application properties
-    'jspTemplate'
+    'jspTemplate', 'headerParams'
   ]
 
   public static internalApp: string [] = [
@@ -117,7 +117,7 @@ export class Application extends Resource {
     // Specific application properties
     'title', 'theme', 'scales', 'srs', 'treeAutoRefresh',
     'accessParentTerritory', 'accessChildrenTerritory',
-    'situationMap'
+    'situationMap', 'headerParams'
   ]
 
   public static touristicApp: string [] = [
@@ -126,7 +126,7 @@ export class Application extends Resource {
     // Common application properties
     'id',  'name', 'description', 'logo', 'type',
     'createdDate', 'parameters', 'availableRoles',
-    'trees', 'backgrounds', 'territories'
+    'trees', 'backgrounds', 'territories', 'headerParams'
   ]
 }
 
@@ -146,6 +146,7 @@ export class ApplicationProjection extends Resource {
   createdDate: string;
   logo: string;
   description: string;
+  headerParams: any;
 
   /**
    * Creates a new ApplicationProjection instance copying only the properties declared in ApplicationProjection and Resource classes
