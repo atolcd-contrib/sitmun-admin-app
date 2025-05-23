@@ -342,6 +342,8 @@ export class ApplicationFormComponent extends BaseFormComponent<ApplicationProje
           || null,
       }
     );
+    if(Number(safeToEdit.creatorId) == -1)
+      safeToEdit.creatorId = null;
     safeToEdit.headerParams = this.headerParams;
     return Application.fromObject(safeToEdit)
   }
