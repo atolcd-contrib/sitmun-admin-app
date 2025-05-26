@@ -539,8 +539,8 @@ export class ApplicationFormComponent extends BaseFormComponent<ApplicationProje
         this.utils.getSelCheckboxColumnDef(),
         this.utils.getNonEditableColumnDef('applicationEntity.name', 'name'),
         this.utils.getEditableColumnDef('applicationEntity.serviceURL', 'url'),
-        this.utils.getEditableColumnDef('applicationEntity.visible', 'visible'),
-        this.utils.getEditableColumnDef('applicationEntity.section', 'section'),
+        this.utils.getBooleanColumnDef('applicationEntity.visible', 'visible', true),
+        this.utils.getSelectColumnDef('applicationEntity.section', 'section', true, this.headerParamsSection),
         this.utils.getStatusColumnDef()])
       .withRelationsOrder('name')
       .withRelationsFetcher(() => {
@@ -554,43 +554,50 @@ export class ApplicationFormComponent extends BaseFormComponent<ApplicationProje
           this.entityToEdit.headerParams = this.headerParams;
         }
 
-        await onCreate(applicationParameters).forEach(item => {
-          let object = {
-            url: item.url,
-            visible: item.visible
-          }
-          if(item.section == this.utils.getTranslate('applicationEntity.headerLeftSection'))
-            this.entityToEdit.headerParams.headerLeftSection[item.name] = object;
-          else if(item.section == this.utils.getTranslate('applicationEntity.headerRightSection'))
-            this.entityToEdit.headerParams.headerRightSection[item.name] = object;
-          const newItem = Application.fromObject(this.entityToEdit);
-          return this.applicationService.update(newItem)
+        const handleCreate = new Promise(() => {
+          onCreate(applicationParameters).forEach(item => {
+            let object = {
+              url: item.url,
+              visible: item.visible
+            }
+            if(item.section == this.utils.getTranslate('applicationEntity.headerLeftSection'))
+              this.entityToEdit.headerParams.headerLeftSection[item.name] = object;
+            else if(item.section == this.utils.getTranslate('applicationEntity.headerRightSection'))
+              this.entityToEdit.headerParams.headerRightSection[item.name] = object;
+            const newItem = Application.fromObject(this.entityToEdit);
+            return this.applicationService.update(newItem)
+          });
         });
 
-        await onUpdate(applicationParameters).forEach(item => {
-          let object = {
-            url: item.url,
-            visible: item.visible
-          }
-          if(item.section == this.utils.getTranslate('applicationEntity.headerLeftSection')) {
-            this.entityToEdit.headerParams.headerLeftSection[item.name] = object;
-            delete this.entityToEdit.headerParams.headerRightSection[item.name];
-          }
-          else if(item.section == this.utils.getTranslate('applicationEntity.headerRightSection')) {
-            this.entityToEdit.headerParams.headerRightSection[item.name] = object;
+        const handleUpdate = new Promise(() => {
+          onUpdate(applicationParameters).forEach(item => {
+            let object = {
+              url: item.url,
+              visible: item.visible
+            }
+            if(item.section == this.utils.getTranslate('applicationEntity.headerLeftSection')) {
+              this.entityToEdit.headerParams.headerLeftSection[item.name] = object;
+              delete this.entityToEdit.headerParams.headerRightSection[item.name];
+            }
+            else if(item.section == this.utils.getTranslate('applicationEntity.headerRightSection')) {
+              this.entityToEdit.headerParams.headerRightSection[item.name] = object;
+              delete this.entityToEdit.headerParams.headerLeftSection[item.name];
+            }
+            const newItem = Application.fromObject(this.entityToEdit);
+            return this.applicationService.update(newItem)
+          });
+        });
+
+        const handleDelete = new Promise(() => {
+          onDelete(applicationParameters).forEach(item => {
             delete this.entityToEdit.headerParams.headerLeftSection[item.name];
-          }
-          const newItem = Application.fromObject(this.entityToEdit);
-          return this.applicationService.update(newItem)
+            delete this.entityToEdit.headerParams.headerRightSection[item.name];
+            const newItem = Application.fromObject(this.entityToEdit);
+            return this.applicationService.update(newItem)
+          });
         });
 
-        await onDelete(applicationParameters).forEach(item => {
-          delete this.entityToEdit.headerParams.headerLeftSection[item.name];
-          delete this.entityToEdit.headerParams.headerRightSection[item.name];
-          const newItem = Application.fromObject(this.entityToEdit);
-          return this.applicationService.update(newItem)
-        });
-
+        Promise.allSettled([handleCreate, handleUpdate, handleDelete]);
         this.headerParams = this.entityToEdit.headerParams;
       })
       .withTemplateDialog('newHeaderParamDialog', () => {
@@ -777,7 +784,6 @@ export class ApplicationFormComponent extends BaseFormComponent<ApplicationProje
 
   private getAllHeaderParams = (): Observable<ApplicationHeaderParameter[]> => {
     const result: ApplicationHeaderParameter[] = [];
-
     const headerLeft = Object.keys(this.headerParams.headerLeftSection)
       .filter(key => !this.headerBaseLeft.includes(key))
       .reduce((obj, key) => {
